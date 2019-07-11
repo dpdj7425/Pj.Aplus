@@ -1,0 +1,1193 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'C:\Users\ychoi\PycharmProjects\APLUS\Main.ui'
+#
+# Created by: PyQt5 UI code generator 5.9.2
+#
+# WARNING! All changes made in this file will be lost!
+
+import sys
+from PyQt5 import QtGui, uic, QtWidgets, QtCore
+from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import *
+import random
+
+
+class Ui_MainWindow(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(Ui_MainWindow, self).__init__()
+
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("ProjectA+")
+        MainWindow.resize(500, 500)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+
+
+        self.Explain = QtWidgets.QPushButton(self.centralwidget)
+        self.Explain.setGeometry(QtCore.QRect(80, 10, 75, 23))
+        self.Explain.setObjectName("Explain")
+        self.Explain.clicked.connect(self.ExplainClicked)
+        #####################################################Explain 설정 및 버튼연결
+
+        self.Start = QtWidgets.QPushButton(self.centralwidget)
+        self.Start.setGeometry(QtCore.QRect(80, 50, 75, 23))
+        self.Start.setObjectName("Start")
+        self.Start.clicked.connect(self.StartClicked)
+        #################################################Start 설정 및 버튼연결
+
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(20, 15, 56, 12))
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(20, 56, 56, 12))
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_2.setObjectName("label_2")
+
+        self.Exit = QtWidgets.QPushButton(self.centralwidget)
+        self.Exit.setGeometry(QtCore.QRect(390, 420, 75, 23))
+        self.Exit.setObjectName("Exit")
+        self.Exit.clicked.connect(MainWindow.close)
+        #####################################################종료버튼 설정 및 나가기연결
+
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(190, 10, 291, 61))
+        self.label_3.setText("")
+        self.label_3.setObjectName("label_3")
+        self.imageList = ['CBNU4.png', 'Logo.png', 'Logo2.png']
+        label_3 = self.label_3
+        CBNU = QPixmap("CBNU4.png")
+        label_3.setPixmap(CBNU)
+        label_3.setFixedSize(label_3.width(), label_3.height())
+        label_3.setScaledContents(True)
+        ################################################# 라벨 3 설정 및 이미지 넣음
+
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(30,150,341,271))
+        self.label_4.setText("")
+        self.label_4.setObjectName("label_4")
+        label_4 = self.label_4
+        Logo = QPixmap("Logo3.png")
+        label_4.setPixmap(Logo)
+        label_4.setFixedSize(label_4.width(), label_4.height())
+        label_4.setScaledContents(True)
+        ################################################# 라벨 4 설정 및 이미지 넣음
+
+
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 500, 21))
+        self.menubar.setObjectName("menubar")
+        self.menuProject_A = QtWidgets.QMenu(self.menubar)
+        self.menuProject_A.setObjectName("menuProject_A")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.actionZoSeongju = QtWidgets.QAction(MainWindow)
+        self.actionZoSeongju.setObjectName("actionZoSeongju")
+        self.menuProject_A.addAction(self.actionZoSeongju)
+        self.menubar.addAction(self.menuProject_A.menuAction())
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "결.장.구 : 결정장애 해결 프로젝트"))
+        self.Explain.setText(_translate("MainWindow", "Explain"))
+        self.Start.setText(_translate("MainWindow", "Start"))
+        self.label.setText(_translate("MainWindow", "도움말"))
+        self.label_2.setText(_translate("MainWindow", "시작하기"))
+        self.Exit.setText(_translate("MainWindow", "Exit"))
+        self.menuProject_A.setTitle(_translate("MainWindow", "Project A+"))
+        self.actionZoSeongju.setText(_translate("MainWindow", "Made by ZoSeongju"))
+
+    def ExplainClicked(self): #Explain과 연결될 함수
+        QMessageBox.about(self, "Explain", "기호에 맞는 음식의 사진을 누르세요")
+
+    def StartClicked(self): #Start와 연결될 함수
+        Sta = Ui_Dialog()
+        Sta.exec_()
+
+
+class Ui_Dialog(QtWidgets.QDialog):
+    def __init__(self):
+        super(Ui_Dialog, self).__init__()
+        self.setupUi()
+
+    def setupUi(self):
+
+        self.FoodList=['짜장면.gif',
+'짬뽕.gif',
+'마라탕.gif',
+'탕수육.gif',
+'팔보채.gif',
+'마파두부.gif',
+'깐풍기.gif',
+'사천짜장.gif',
+'류산슬.gif',
+'양장피.gif',
+'고추잡채.gif',
+'동파육.gif',
+'고기만두.gif',
+'김치만두.gif',
+'볶음밥.gif',
+'깐소새우.gif',
+'가츠동.gif',
+'규동.gif',
+'스시.gif',
+'우동.gif',
+'소바.gif',
+'라멘.gif',
+'덴뿌라.gif',
+'샤브샤브.gif',
+'나베.gif',
+'오코노미야끼.gif',
+'타코야끼.gif',
+'사시미.gif',
+'타다끼.gif',
+'유부초밥.gif',
+'오니기리.gif',
+'불고기.gif',
+'갈비.gif',
+'제육볶음.gif',
+'김치두부두루치기.gif',
+'족발.gif',
+'찜닭.gif',
+'백숙.gif',
+'골뱅이무침.gif',
+'떡볶이.gif',
+'만두국.gif',
+'해장국.gif',
+'냉면.gif',
+'부대찌개.gif',
+'비빔밥.gif',
+'고등어조림.gif',
+'삼각김밥.gif',
+'피자.gif',
+'라면.gif',
+'짜장라면.gif',
+'볶음라면.gif',
+'순대.gif',
+'핫도그.gif',
+'튀김.gif',
+'햄버거.gif',
+'새우버거.gif',
+'도넛.gif',
+'양념치킨.gif',
+'후라이드치킨.gif',
+'오뎅.gif',]
+
+        self.resize(500, 500)
+        self.label = QtWidgets.QLabel(self)
+        self.label.setGeometry(QtCore.QRect(40, 50, 200, 200))
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self)
+        self.label_2.setGeometry(QtCore.QRect(260, 50, 200, 200))
+        self.label_2.setText("")
+        self.label_2.setObjectName("label_2")
+        self.radioButton = QtWidgets.QRadioButton(self)
+        self.radioButton.setGeometry(QtCore.QRect(120, 300, 90, 16))
+        self.radioButton.setObjectName("radioButton")
+        self.radioButton_2 = QtWidgets.QRadioButton(self)
+        self.radioButton_2.setGeometry(QtCore.QRect(330, 300, 90, 16))
+        self.radioButton_2.setObjectName("radioButton_2")
+        self.pushButton = QtWidgets.QPushButton(self)
+        self.pushButton.setGeometry(QtCore.QRect(390, 380, 75, 23))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(self)
+        self.pushButton_2.setGeometry(QtCore.QRect(390, 450, 75, 23))
+        self.pushButton_2.setObjectName("pushButton_2")
+
+        self.setWindowTitle("Start")
+        self.radioButton.setText("Left")
+        self.radioButton_2.setText("Right")
+        self.pushButton.setText("Submit")
+        self.pushButton_2.setText("Exit")
+
+
+
+#####################################################################
+
+
+
+
+        self.pushButton_2.clicked.connect(self.close)
+        self.pushButton.clicked.connect(self.Submit_clicked)
+        self.radioButton.clicked.connect(self.Radio_clicked)
+        self.radioButton_2.clicked.connect(self.Radio_clicked)
+
+############################################################
+        infile = open("dbText2.txt", "r")
+        infile2 = open("dbText.txt", "r")
+
+        global a1
+        global a2
+        global a3
+        global a4
+        global a5
+
+        global b1
+        global b2
+
+        global c1
+        global c2
+        global c3
+        global c4
+        global c5
+        global c6
+
+        global mylist2
+        mylist2 = list()
+
+        global mylist
+        mylist = list()
+        while True:
+            lines = infile.readline()
+            if not lines: break
+            mylist.append(lines)
+###############################################################변수선언
+        global result1
+        global result2
+
+
+        global Stack
+
+        global imagenumber1
+        global imagenumber2
+
+
+        Stack = 0
+
+        result1 = random.choice(mylist)
+        result2 = random.choice(mylist)
+        infile.close()
+#############################################################
+        imagenumber1 = mylist.index(str(result1))
+        imagenumber2 = mylist.index(str(result2))
+
+        Left = QPixmap(str(self.FoodList[imagenumber1]))
+        self.label.setPixmap(Left)
+        self.label.setFixedSize(self.label.width(), self.label.height())
+        self.label.setScaledContents(True)
+
+        Right = QPixmap(str(self.FoodList[imagenumber2]))
+        self.label_2.setPixmap(Right)
+        self.label_2.setFixedSize(self.label_2.width(), self.label_2.height())
+        self.label_2.setScaledContents(True)
+
+    def Radio_clicked(self):
+        global msg
+        msg = ""
+        if self.radioButton.isChecked():
+            msg = "Left"
+        elif self.radioButton_2.isChecked():
+            msg = "Right"
+
+
+    def Submit_clicked(self):
+
+        global result1
+        global result2
+        global  Stack
+        Stack = Stack + 1
+
+        result1 = random.choice(mylist)
+        result2 = random.choice(mylist)
+
+        print(Stack)
+
+        if Stack <16 :
+            if Stack == 1:
+                global a1
+                global a2
+                global a3
+                global a4
+                global a5
+                global b1
+                global b2
+                global c1
+                global c2
+                global c3
+                global c4
+                global c5
+                global c6
+                a1 = 0
+                a2 = 0
+                a3 = 0
+                a4 = 0
+                a5 = 0
+                b1 = 0
+                b2 = 0
+                c1 = 0
+                c2 = 0
+                c3 = 0
+                c4 = 0
+                c5 = 0
+                c6 = 0
+            try:
+                QMessageBox.about(self, "Select", str(msg) + ", " + str(result1) + ", " + str(result2))
+
+            except:
+                QMessageBox.about(self, "Error", "메뉴를 골라주세요")
+
+            imagenumber1 = mylist.index(str(result1))
+            imagenumber2 = mylist.index(str(result2))
+
+            Left = QPixmap(str(self.FoodList[imagenumber1]))
+            self.label.setPixmap(Left)
+            self.label.setFixedSize(self.label.width(), self.label.height())
+            self.label.setScaledContents(True)
+
+            Right = QPixmap(str(self.FoodList[imagenumber2]))
+            self.label_2.setPixmap(Right)
+            self.label_2.setFixedSize(self.label_2.width(), self.label_2.height())
+            self.label_2.setScaledContents(True)
+
+            if msg == "Left":
+                if imagenumber1 == 0:
+                    a2 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 1:
+                    a2 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 2:
+                    a2 += 1
+                    b1 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 3:
+                    a2 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 4:
+                    a2 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 5:
+                    a2 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 6:
+                    a2 += 1
+                    b1 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 7:
+                    a2 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 8:
+                    a2 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 9:
+                    a2 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 10:
+                    a2 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 11:
+                    a2 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 12:
+                    a2 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 13:
+                    a2 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 14:
+                    a2 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber1 == 15:
+                    a2 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 16:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber1 == 17:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber1 == 18:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber1 == 19:
+                    a3 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 20:
+                    a3 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 21:
+                    a3 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 22:
+                    a3 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 23:
+                    a3 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 24:
+                    a3 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 25:
+                    a3 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 26:
+                    a3 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber1 == 27:
+                    a3 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber1 == 28:
+                    a3 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber1 == 29:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber1 == 30:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber1 == 31:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 32:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 33:
+                    a4 += 1
+                    b1 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 34:
+                    a4 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 35:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 36:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 37:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 38:
+                    a4 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber1 == 39:
+                    a4 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 40:
+                    a4 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 41:
+                    a4 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 42:
+                    a4 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 43:
+                    a4 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 44:
+                    a4 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber1 == 45:
+                    a4 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber1 == 46:
+                    a5 += 1
+                    b1 += 1
+                    c2 += 1
+
+                elif imagenumber1 == 47:
+                    a5 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber1 == 48:
+                    a5 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 49:
+                    a5 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 50:
+                    a5 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber1 == 51:
+                    a5 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 52:
+                    a5 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber1 == 53:
+                    a5 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber1 == 54:
+                    a5 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber1 == 55:
+                    a5 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber1 == 56:
+                    a5 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber1 == 57:
+                    a5 += 1
+                    b1 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 58:
+                    a5 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber1 == 59:
+                    a5 += 1
+                    b2 += 1
+                    c4 += 1
+
+            if msg == "Right":
+                if imagenumber2 == 0:
+                    a2 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 1:
+                    a2 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 2:
+                    a2 += 1
+                    b1 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 3:
+                    a2 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 4:
+                    a2 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 5:
+                    a2 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 6:
+                    a2 += 1
+                    b1 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 7:
+                    a2 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 8:
+                    a2 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 9:
+                    a2 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 10:
+                    a2 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 11:
+                    a2 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 12:
+                    a2 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 13:
+                    a2 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 14:
+                    a2 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber2 == 15:
+                    a2 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 16:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber2 == 17:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber2 == 18:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber2 == 19:
+                    a3 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 20:
+                    a3 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 21:
+                    a3 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 22:
+                    a3 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 23:
+                    a3 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 24:
+                    a3 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 25:
+                    a3 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 26:
+                    a3 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber2 == 27:
+                    a3 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber2 == 28:
+                    a3 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber2 == 29:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber2 == 30:
+                    a3 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber2 == 31:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 32:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 33:
+                    a4 += 1
+                    b1 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 34:
+                    a4 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 35:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 36:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 37:
+                    a4 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 38:
+                    a4 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber2 == 39:
+                    a4 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 40:
+                    a4 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 41:
+                    a4 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 42:
+                    a4 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 43:
+                    a4 += 1
+                    b1 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 44:
+                    a4 += 1
+                    b2 += 1
+                    c2 += 1
+
+                elif imagenumber2 == 45:
+                    a4 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber2 == 46:
+                    a5 += 1
+                    b1 += 1
+                    c2 += 1
+
+                elif imagenumber2 == 47:
+                    a5 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber2 == 48:
+                    a5 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 49:
+                    a5 += 1
+                    b2 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 50:
+                    a5 += 1
+                    b1 += 1
+                    c1 += 1
+
+                elif imagenumber2 == 51:
+                    a5 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 52:
+                    a5 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber2 == 53:
+                    a5 += 1
+                    b2 += 1
+                    c5 += 1
+
+                elif imagenumber2 == 54:
+                    a5 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber2 == 55:
+                    a5 += 1
+                    b2 += 1
+                    c4 += 1
+
+                elif imagenumber2 == 56:
+                    a5 += 1
+                    b2 += 1
+                    c6 += 1
+
+                elif imagenumber2 == 57:
+                    a5 += 1
+                    b1 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 58:
+                    a5 += 1
+                    b2 += 1
+                    c3 += 1
+
+                elif imagenumber2 == 59:
+                    a5 += 1
+                    b2 += 1
+                    c4 += 1
+
+            print (a1, a2, a3, a4, a5, b1, b2, c1, c2, c3, c4, c5, c6)
+
+        elif Stack >=16 :
+            Fi = Ui_Final()
+            Fi.exec_()
+
+
+    def LeftChoice(self):
+        pass
+
+    def RightChoice(self):
+        pass
+
+
+class Ui_Final(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(Ui_Final, self).__init__()
+        self.setupUi()
+
+    def setupUi(self):
+        self.setObjectName("Final")
+        self.resize(500, 500)
+        self.showFinal = QtWidgets.QLabel(self)
+        self.showFinal.setGeometry(QtCore.QRect(150, 40, 200, 200))
+        self.showFinal.setText("")
+        self.showFinal.setObjectName("showFinal")
+        self.label = QtWidgets.QLabel(self)
+        self.label.setGeometry(QtCore.QRect(40, 430, 48, 48))
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.ddss = QtWidgets.QLabel(self)
+        self.ddss.setGeometry(QtCore.QRect(90, 290, 351, 41))
+        font = QtGui.QFont()
+        font.setFamily("NanumGothic")
+        font.setPointSize(16)
+        self.ddss.setFont(font)
+        self.ddss.setObjectName("ddss")
+        self.label_2 = QtWidgets.QLabel(self)
+        self.label_2.setGeometry(QtCore.QRect(110, 470, 281, 16))
+        self.label_2.setObjectName("label_2")
+        self.pushButton = QtWidgets.QPushButton(self)
+        self.pushButton.setGeometry(QtCore.QRect(400, 370, 75, 23))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.close)
+        QtCore.QMetaObject.connectSlotsByName(self)
+
+        self.setWindowTitle("결과")
+        self.ddss.setText("최종 선정된 메뉴는 다음과 같습니다.")
+        self.label_2.setText("<Copyright 2019. Project A+. All rights reserved.>")
+        self.pushButton.setText("Exit")
+
+        FinalList1 = [a1, a2, a3, a4, a5]
+        FinalList2 = [b1, b2]
+        FinalList3 = [c1, c2, c3, c4, c5, c6]
+        P=0
+
+        Max_A = FinalList1.index(int(max(FinalList1)))
+        Max_B = FinalList2.index(int(max(FinalList2)))
+        Max_C = FinalList3.index(int(max(FinalList3)))
+
+        a2b1c1 = ['짬뽕.gif', '사천짜장.gif', '고추잡채.gif']
+        a2b1c2 = []
+        a2b1c3 = ['마라탕.gif', '깐풍기.gif']
+        a2b1c4 = []
+        a2b1c5 = ['마파두부.gif', '김치만두.gif', '깐소새우.gif']
+        a2b1c6 = []
+        a2b2c1 = ['짜장면.gif']
+        a2b2c2 = ['볶음밥.gif']
+        a2b2c3 = ['탕수육.gif', '동파육.gif']
+        a2b2c4 = []
+        a2b2c5 = ['팔보채.gif', '유산슬.gif', '양장피.gif', '고기만두.gif']
+        a2b2c6 = []
+
+        a3b1c1 = []
+        a3b1c2 = []
+        a3b1c3 = []
+        a3b1c4 = []
+        a3b1c5 = []
+        a3b1c6 = []
+        a3b2c1 = ['우동.gif', '소바.gif', '라멘.gif']
+        a3b2c2 = ['가츠동.gif', '규동.gif', '스시.gif', '유부초밥.gif', '오니기리.gif']
+        a3b2c3 = ['샤브샤브.gif']
+        a3b2c4 = ['사시미.gif', '타다끼.gif']
+        a3b2c5 = ['덴뿌라.gif', '나베.gif', '오코노미야끼.gif']
+        a3b2c6 = ['타코야끼.gif']
+
+        a4b1c1 = []
+        a4b1c2 = []
+        a4b1c3 = ['제육볶음.gif']
+        a4b1c4 = []
+        a4b1c5 = ['떡볶이.gif', '해장국.gif', '부대찌개.gif']
+        a4b1c6 = []
+        a4b2c1 = []
+        a4b2c2 = ['비빔밥.gif']
+        a4b2c3 = ['불고기.gif','갈비.gif', '족발.gif', '찜닭.gif', '백숙.gif']
+        a4b2c4 = ['골뱅이무침.gif', '고등어조림.gif']
+        a4b2c5 = ['김치두부두루치기.gif', '만두국.gif', '냉면.gif']
+        a4b2c6 = []
+
+        a5b1c1 = ['라면.gif', '볶음라면.gif']
+        a5b1c2 = ['삼각김밥.gif']
+        a5b1c3 = ['양념치킨.gif']
+        a5b1c4 = []
+        a5b1c5 = []
+        a5b1c6 = []
+        a5b2c1 = ['짜장라면.gif']
+        a5b2c2 = []
+        a5b2c3 = ['후라이드치킨.gif']
+        a5b2c4 = ['새우버거.gif', '오뎅.gif']
+        a5b2c5 = ['순대.gif', '튀김.gif']
+        a5b2c6 = ['피자.gif', '핫도그.gif', '햄버거.gif', '도넛.gif']
+
+        if Max_A == 1 and Max_B == 0 and Max_C == 0:
+            P = a2b1c1
+        elif Max_A == 1 and Max_B == 0 and Max_C == 1:
+            P = a2b1c2
+        elif Max_A == 1 and Max_B == 0 and Max_C == 2:
+            P = a2b1c3
+        elif Max_A == 1 and Max_B == 0 and Max_C == 3:
+            P = a2b1c4
+        elif Max_A == 1 and Max_B == 0 and Max_C == 4:
+            P = a2b1c5
+        elif Max_A == 1 and Max_B == 0 and Max_C == 5:
+            P = a2b1c6
+        elif Max_A == 1 and Max_B == 1 and Max_C == 0:
+            P = a2b2c1
+        elif Max_A == 1 and Max_B == 1 and Max_C == 1:
+            P = a2b2c2
+        elif Max_A == 1 and Max_B == 1 and Max_C == 2:
+            P = a2b2c3
+        elif Max_A == 1 and Max_B == 1 and Max_C == 3:
+            P = a2b2c4
+        elif Max_A == 1 and Max_B == 1 and Max_C == 4:
+            P = a2b2c5
+        elif Max_A == 1 and Max_B == 1 and Max_C == 5:
+            P = a2b2c6
+
+        elif Max_A == 2 and Max_B == 0 and Max_C == 0:
+            P = a3b1c1
+        elif Max_A == 2 and Max_B == 0 and Max_C == 1:
+            P = a3b1c2
+        elif Max_A == 2 and Max_B == 0 and Max_C == 2:
+            P = a3b1c3
+        elif Max_A == 2 and Max_B == 0 and Max_C == 3:
+            P = a3b1c4
+        elif Max_A == 2 and Max_B == 0 and Max_C == 4:
+            P = a3b1c5
+        elif Max_A == 2 and Max_B == 0 and Max_C == 5:
+            P = a3b1c6
+        elif Max_A == 2 and Max_B == 1 and Max_C == 0:
+            P = a3b2c1
+        elif Max_A == 2 and Max_B == 1 and Max_C == 1:
+            P = a3b2c2
+        elif Max_A == 2 and Max_B == 1 and Max_C == 2:
+            P = a3b2c3
+        elif Max_A == 2 and Max_B == 1 and Max_C == 3:
+            P = a3b2c4
+        elif Max_A == 2 and Max_B == 1 and Max_C == 4:
+            P = a3b2c5
+        elif Max_A == 2 and Max_B == 1 and Max_C == 5:
+            P = a3b2c6
+
+        elif Max_A == 3 and Max_B == 0 and Max_C == 0:
+            P = a4b1c1
+        elif Max_A == 3 and Max_B == 0 and Max_C == 1:
+            P = a4b1c2
+        elif Max_A == 3 and Max_B == 0 and Max_C == 2:
+            P = a4b1c3
+        elif Max_A == 3 and Max_B == 0 and Max_C == 3:
+            P = a4b1c4
+        elif Max_A == 3 and Max_B == 0 and Max_C == 4:
+            P = a4b1c5
+        elif Max_A == 3 and Max_B == 0 and Max_C == 5:
+            P = a4b1c6
+        elif Max_A == 3 and Max_B == 1 and Max_C == 0:
+            P = a4b2c1
+        elif Max_A == 3 and Max_B == 1 and Max_C == 1:
+            P = a4b2c2
+        elif Max_A == 3 and Max_B == 1 and Max_C == 2:
+            P = a4b2c3
+        elif Max_A == 3 and Max_B == 1 and Max_C == 3:
+            P = a4b2c4
+        elif Max_A == 3 and Max_B == 1 and Max_C == 4:
+            P = a4b2c5
+        elif Max_A == 3 and Max_B == 1 and Max_C == 5:
+            P = a4b2c6
+
+        elif Max_A == 4 and Max_B == 0 and Max_C == 0:
+            P = a5b1c1
+        elif Max_A == 4 and Max_B == 0 and Max_C == 1:
+            P = a5b1c2
+        elif Max_A == 4 and Max_B == 0 and Max_C == 2:
+            P = a5b1c3
+        elif Max_A == 4 and Max_B == 0 and Max_C == 3:
+            P = a5b1c4
+        elif Max_A == 4 and Max_B == 0 and Max_C == 4:
+            P = a5b1c5
+        elif Max_A == 4 and Max_B == 0 and Max_C == 5:
+            P = a5b1c6
+        elif Max_A == 4 and Max_B == 1 and Max_C == 0:
+            P = a5b2c1
+        elif Max_A == 4 and Max_B == 1 and Max_C == 1:
+            P = a5b2c2
+        elif Max_A == 4 and Max_B == 1 and Max_C == 2:
+            P = a5b2c3
+        elif Max_A == 4 and Max_B == 1 and Max_C == 3:
+            P = a5b2c4
+        elif Max_A == 4 and Max_B == 1 and Max_C == 4:
+            P = a5b2c5
+        elif Max_A == 4 and Max_B == 1 and Max_C == 5:
+            P = a5b2c6
+
+        Ad = random.choice(P)
+
+        Ad2 = QPixmap(str(Ad))
+        self.showFinal.setPixmap(Ad2)
+        self.showFinal.setFixedSize(self.showFinal.width(), self.showFinal.height())
+        self.showFinal.setScaledContents(True)
+
+        Icon = QPixmap('Icon.png')
+        self.label.setPixmap(Icon)
+        self.label.setFixedSize(self.label.width(), self.label.height())
+        self.label.setScaledContents(True)
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
